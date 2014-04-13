@@ -24,7 +24,7 @@ Mt.Class('Car', {
 		console.log('I am '+ this.name + ' run ' + 'on ' + km + '/h');
 	},
 	getName: function(){
-		console.log(this.$name);
+		console.log(this.name);
 	}
 });
 
