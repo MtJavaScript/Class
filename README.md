@@ -1,6 +1,6 @@
 Class
 =====
-## Very small Class JavaScript lib
+Very small Class JavaScript lib  
 
 Version - 0.0.2  
 Debug version - 5 Kb  
