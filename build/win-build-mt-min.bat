@@ -1,0 +1,1 @@
+sencha build -p mt-min.jsb3 -d .

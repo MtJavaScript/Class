@@ -1,4 +1,4 @@
-/**
+/*!
 *  Mt JS is small JavaScript RIA library
 *  Licence MIT
 *  Author: Mikhail Tatsky - JavaScript Arhitect

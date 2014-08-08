@@ -1,0 +1,12 @@
+{
+    "projectName": "Mt JS - RIA javascript library",
+	"builds": [{
+		"name": "Mt JS compressed",
+        "target": "mt-min.js",
+		"compress": true,
+		"files": [{
+			"path": "/",
+			"name": "mt.js"
+		}]
+	}]
+}

@@ -1,0 +1,21 @@
+{
+    "projectName": "Mt JS - RIA javascript library",
+	"builds": [{
+		"name": "Mt JS",
+        "target": "mt.js",
+		"compress": false,
+		"files": [{
+			"path": "../src/core/",
+			"name": "Mt.js"
+		},{
+			"path": "../src/",
+			"name": "Collection.js"
+		},{
+			"path": "../src/",
+			"name": "Class.js"
+		},{
+			"path": "../src/",
+			"name": "Observable.js"
+		}]
+	}]
+}
