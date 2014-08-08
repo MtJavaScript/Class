@@ -26,9 +26,7 @@ Release min
 # Samples
 ## Sample 1
 ``` html
-<script src="lib/Mt.js"></script>
-<script src="lib/Collection.js"></script>
-<script src="lib/Class.js"></script>
+<script src="../build/mt-min.js"></script>
 
 <script>
 Mt.Class('Car', {
@@ -77,6 +75,55 @@ s.run(70);
 </script>
 ```
 
+##Sample 2
+
+```html
+<script src="../build/mt-min.js"></script>
+
+<script>
+var Trait = function(){};
+Trait.prototype = {
+	a: function(){
+		console.log('a');
+	},
+	b: function(){
+		console.log('b');
+	}
+};
+
+Mt.Class('App.Window', {
+	traits: {
+		methods: [{
+			name: 'a',
+			method: Trait.prototype.a
+		}]
+	},
+	constructor: function(){
+		
+	}
+});
+
+
+Mt.Class('App.Panel', {
+	traits: {
+		classes: [
+			Trait
+		]
+	},
+	constructor: function(){
+		
+	}
+});
+
+var w = new App.Window();
+w.a();
+
+var p = new App.Panel();
+p.a();
+p.b();
+</script>
+```
+
 # Build
 ##Contained files
 ```js
@@ -86,7 +133,7 @@ Class.js
 Observable.js
 ```
 ##Sencha CMD
-Building was done over sencha CMD.  
+Building was done over Sencha CMD.  
 Configure build/mt-min.jsb3 and than  
 in Windows run win-build-mt.bat generate build/mt.js file  
 and run win-build-mt-min.bat generate build/mt-min.js file  

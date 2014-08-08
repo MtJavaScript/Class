@@ -1,0 +1,49 @@
+<!-- Debug -->
+<script src="load-all-js-files.js"></script>
+<!-- Release -->
+<!--<script src="../build/mt.js"></script>-->
+<!-- Release min -->
+<!--<script src="../build/mt-min.js"></script>-->
+
+<script>
+var Trait = function(){};
+Trait.prototype = {
+	a: function(){
+		console.log('a');
+	},
+	b: function(){
+		console.log('b');
+	}
+};
+
+Mt.Class('App.Window', {
+	traits: {
+		methods: [{
+			name: 'a',
+			method: Trait.prototype.a
+		}]
+	},
+	constructor: function(){
+		
+	}
+});
+
+
+Mt.Class('App.Panel', {
+	traits: {
+		classes: [
+			Trait
+		]
+	},
+	constructor: function(){
+		
+	}
+});
+
+var w = new App.Window();
+w.a();
+
+var p = new App.Panel();
+p.a();
+p.b();
+</script>
