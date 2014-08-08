@@ -76,7 +76,8 @@ s.run(70);
 ```
 
 ##Sample 2
-
+Traits are similiar to mixins or importing functions to class.  
+It addes functions to class from different classes
 ```html
 <script src="../build/mt-min.js"></script>
 
