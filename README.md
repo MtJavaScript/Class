@@ -4,6 +4,7 @@ Class
  Very small Class JavaScript lib
 #Include
 ``` html
+<script src="lib/Mt.js"></script>
 <script src="lib/Collection.js"></script>
 <script src="lib/Class.js"></script>
 ```
@@ -11,6 +12,7 @@ Class
 # Samples
 ## Sample 1
 ``` html
+<script src="lib/Mt.js"></script>
 <script src="lib/Collection.js"></script>
 <script src="lib/Class.js"></script>
 
