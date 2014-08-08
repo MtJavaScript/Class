@@ -9,16 +9,16 @@ Min and gzipped version - 2 Kb
 
 
 #Include
-Debug
 ``` html
+Debug
 <script src="load-all-js-files.js"></script>
 ```
-Release
 ``` html
+Release
 <script src="../build/mt.js"></script>
 ```
-Release min
 ``` html
+Release min
 <script src="../build/mt-min.js"></script>
 ```
 
