@@ -1,11 +1,13 @@
 Class
 =====
+###Very small Class JavaScript lib
+
 Version - 0.0.2  
 Debug version - 5 Kb  
 Min version - 3 Kb  
 Min and gzipped version - 2 Kb  
 
- Very small Class JavaScript lib
+
 #Include
 Debug
 ``` html
