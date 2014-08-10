@@ -7,8 +7,8 @@ Supports strict mode - "use strict;"
 Simple and fast OOP  
 
 Version - 0.0.2  
-Debug version - 12 Kb  
-Min version - 7 Kb  
+Debug version - 14 Kb  
+Min version - 8 Kb  
 Min and gzipped version - 3 Kb  
 
 

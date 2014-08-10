@@ -21,7 +21,13 @@
 			"name": "PluginManager.js"
 		},{
 			"path": "../src/",
+			"name": "WidgetManager.js"
+		},{
+			"path": "../src/",
 			"name": "Observable.js"
+		},{
+			"path": "../src/",
+			"name": "TraitWidget.js"
 		}]
 	}]
 }

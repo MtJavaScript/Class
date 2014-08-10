@@ -188,6 +188,21 @@ Mt.applyConfig = function(object, config){
 	
     return object;
 };
+
+Mt.apply(Mt, {
+	prefix: 'mt-gen',
+	idSeed: 0,
+	id: function(el, prefix){
+		if(!el){
+			return (prefix || Mt.prefix) + (++ZG.idSeed);
+		}
+		el = el.dom || {};
+		if(!el.id){
+			el.id = (prefix || Mt.prefix) + (++ZG.idSeed);
+		}
+		return el.id;
+	}
+});
 Mt.Collection = function(arr){
 	var me = this;
 	
@@ -378,7 +393,11 @@ Mt.Class = function(name, config){
 	}
 	
 	if(config.plugins !== undefined){
-		$classes[name].prototype._plugins = $classes[name].prototype._plugins.concat( config.plugins );
+		if( $classes[name].prototype.$plugins === undefined ){
+			$classes[name].prototype.$plugins = [];
+		}
+		
+		$classes[name].prototype.$plugins = $classes[name].prototype.$plugins.concat( config.plugins );
 		delete $classes[name].prototype.plugins;
 	}
 	
@@ -410,7 +429,7 @@ Mt.Class = function(name, config){
 	}
 	else if(config.ptype){
 		$types[config.type] = _classRef;
-		Mt.addPlugin(config.ptype, _classRef);
+		Mt.addPluginByType(config.ptype, _classRef);
 	}
 };
 
@@ -460,12 +479,49 @@ Mt.Class('Mt.PluginManager', {
 	}
 });
 
-Mt.addPlugin = function(ptype, plugin){
+Mt.addPluginByType = function(ptype, plugin){
 	Mt.PluginManager.addPlugin(ptype, plugin);
 };
 
-Mt.getWidget = function(ptype){
+Mt.getPluginByType = function(ptype){
 	return Mt.PluginManager.getPlugin(ptype);
+};
+Mt.Class('Mt.WidgetManager', {
+	singleton: true,
+	constructor: function(){
+		var me = this;
+		me.wtypes = new Mt.Data();
+		me.widgets = new Mt.Data();
+	},
+	addWidgetType: function(wtype, widget){
+		widget.prototype.wtype = wtype;
+		this.wtypes.add(wtype, widget);
+	},
+	getWidgetClassByType: function(wtype){
+		return this.wtypes.get(wtype);		
+	},
+	addWidget: function(id, widget){
+		this.widgets.add(id, widget);
+	},
+	getWidget: function(id){
+		return this.widgets.get(id);	
+	}
+});
+
+Mt.addWidgetType = function(wtype, widget){
+	Mt.WidgetManager.addWidgetType(wtype, widget);
+};
+
+Mt.getWidgetClassByType = function(wtype){
+	return Mt.WidgetManager.getWidgetClassByType(wtype);
+};
+
+Mt.addWidget = function(id, widget){
+	Mt.WidgetManager.addWidget(id, widget);
+};
+
+Mt.getWidget = function(id){
+	return Mt.WidgetManager.getWidget(id);
 };
 //"use strict";
 Mt.Class('Mt.Observable', {
@@ -626,5 +682,49 @@ Mt.Class('Mt.Observable', {
 		}
 		
 		return lis.length !== 0;
+	}
+});
+Mt.Class('Mt.TraitWidget', {
+	initId: function(){
+		var me = this,
+			prefix = me.prefix || Mt.prefix;
+		
+		me.id = me.id || Mt.id(null, prefix);
+		
+		Mt.addWidget(me.id, me);
+	},
+	initPlugins: function(widget){
+		var me = this,
+			plugin,
+			objectPlugin,
+			pluginConfig;
+		
+		if(me.plugins !== undefined){
+			me.$plugins = me.plugins;
+			//me.$plugins = me.$plugins.concat( me.plugins );
+			delete me.plugins;
+		}
+		
+		var i = 0,
+			plugins = me.$plugins,
+			iL = plugins.length,
+			inWidgetName;
+		
+		//console.log(plugins);
+		
+		for(;i<iL;i++){
+			pluginConfig = plugins[i];
+			pluginConfig.widget = widget;
+			
+			var type = pluginConfig.type || pluginConfig.ptype;
+			plugin = Mt.getPluginByType( type );
+			//console.log(pluginConfig);
+			objectPlugin = new plugin(pluginConfig);
+			inWidgetName = pluginConfig.inWidgetName || objectPlugin.inWidgetName;
+			
+			if(inWidgetName !== undefined){
+				widget[ inWidgetName ] = objectPlugin;
+			}
+		}
 	}
 });
