@@ -299,7 +299,9 @@ Collection.js
 Class.js
 data/Data.js
 PluginManager.js
+WidgetManager.js
 Observable.js
+TraitWidget.js
 ```
 ##Sencha CMD
 Building was done over Sencha CMD.  
