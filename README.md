@@ -2,9 +2,9 @@ Class
 =====
 Very small Class JavaScript lib.  
 Main features:  
-Easy to do widgets.  
-Supports strict mode - "use strict;".  
-Simple and fast OOP.   
+Easy to do widgets  
+Supports strict mode - "use strict;"  
+Simple and fast OOP  
 
 Version - 0.0.2  
 Debug version - 12 Kb  
