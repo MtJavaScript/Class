@@ -3,7 +3,7 @@ Class
 Very small Class JavaScript lib.  
 Main features:  
 Easy to do widgets  
-Supports strict mode - "use strict;"  
+Supports strict mode - "use strict";  
 Simple and fast OOP  
 
 Version - 0.0.2  
