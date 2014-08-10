@@ -1,0 +1,59 @@
+<!-- Debug -->
+<script src="load-all-js-files.js"></script>
+<!-- Release -->
+<!--<script src="../build/mt.js"></script>-->
+<!-- Release min -->
+<!--<script src="../build/mt-min.js"></script>-->
+
+<script>
+Mt.Class('Mt.Window', {
+	extend: Mt.Observable,
+	constructor: function(){
+		var me = this;
+		
+		me.Super('const', arguments);
+		me.init();
+	},
+	init: function(){
+		var me = this;
+		
+		me.addEvents('rendered', 'show', 'hide');
+		me.render();
+	},
+	render: function(){
+		var me = this;
+		
+		me.fireEvent('rendered');
+	},
+	show: function(){
+		var me = this;
+		
+		me.fireEvent('show');
+	},
+	hide: function(){
+		var me = this;
+		
+		me.fireEvent('hide');
+	}
+});
+
+var w = new Mt.Window({
+	title: 'Title',
+	listeners: [{
+		rendered: function(){
+			console.log('rendered');
+		}
+	},{
+		show: function(){
+			console.log('show');
+		}
+	}]
+});
+
+w.on('hide', function(){
+	console.log('hide');
+});
+
+w.show();
+w.hide();
+</script>

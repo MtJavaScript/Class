@@ -6,6 +6,18 @@
 <!--<script src="../build/mt-min.js"></script>-->
 
 <script>
+Mt.Class('Mt.Widget', {
+	extend: Mt.Observable,
+	constructor: function(){
+		var me = this;
+		
+		me.Super('const', arguments);
+	},
+	c: function(){
+		console.log('c');
+	}
+});
+
 var Trait = function(){};
 Trait.prototype = {
 	a: function(){
@@ -21,6 +33,9 @@ Mt.Class('App.Window', {
 		methods: [{
 			name: 'a',
 			method: Trait.prototype.a
+		},{
+			name: 'c',
+			method: Mt.Widget.prototype.c
 		}]
 	},
 	constructor: function(){
@@ -33,7 +48,11 @@ Mt.Class('App.Panel', {
 	traits: {
 		classes: [
 			Trait
-		]
+		],
+		methods: [{
+			name: 'c',
+			method: Mt.Widget.prototype.c
+		}]
 	},
 	constructor: function(){
 		
@@ -42,8 +61,10 @@ Mt.Class('App.Panel', {
 
 var w = new App.Window();
 w.a();
+w.c();
 
 var p = new App.Panel();
 p.a();
 p.b();
+p.c();
 </script>

@@ -1,11 +1,15 @@
 Class
 =====
-Very small Class JavaScript lib  
+Very small Class JavaScript lib.  
+Main features:  
+Easy to do widgets.  
+Supports strict mode - "use strict;".  
+Simple and fast OOP.   
 
 Version - 0.0.2  
-Debug version - 5 Kb  
-Min version - 3 Kb  
-Min and gzipped version - 2 Kb  
+Debug version - 12 Kb  
+Min version - 7 Kb  
+Min and gzipped version - 3 Kb  
 
 
 #Include
@@ -21,6 +25,8 @@ Release
 Release min
 <script src="../build/mt-min.js"></script>
 ```
+
+
 
 
 # Samples
@@ -101,12 +107,81 @@ Mt.App.b();
 ```
 
 ##Sample 3
+Mt.Observable is event class.  
+```html
+<script src="../build/mt-min.js"></script>
+
+<script>
+Mt.Class('Mt.Window', {
+	extend: Mt.Observable,
+	constructor: function(){
+		var me = this;
+		
+		this.Super('const', arguments);
+		me.init();
+	},
+	init: function(){
+		var me = this;
+		
+		me.addEvent('rendered', 'show', 'hide');
+		me.render();
+	},
+	render: function(){
+		var me = this;
+		
+		me.fireEvent('rendered');
+	},
+	show: function(){
+		var me = this;
+		
+		me.fireEvent('show');
+	},
+	hide: function(){
+		var me = this;
+		
+		me.fireEvent('hide');
+	}
+});
+
+var w = new Mt.Window({
+	title: 'Title',
+	listeners: [{
+		rendered: function(){
+			console.log('rendered');
+		}
+	},{
+		show: function(){
+			console.log('show');
+		}
+	}]
+});
+
+w.on('hide', function(){
+	console.log('hide');
+});
+</script>
+```
+
+##Sample 4
 Traits are similiar to mixins or importing functions to class.  
 It addes functions to class from different classes
 ```html
 <script src="../build/mt-min.js"></script>
 
 <script>
+Mt.Class('Mt.Widget', {
+	extend: Mt.Observable,
+	constructor: function(){
+		var me = this;
+		
+		me.Super('const', arguments);
+	},
+	c: function(){
+		console.log('c');
+	}
+});
+
+
 var Trait = function(){};
 Trait.prototype = {
 	a: function(){
@@ -122,6 +197,9 @@ Mt.Class('App.Window', {
 		methods: [{
 			name: 'a',
 			method: Trait.prototype.a
+		},{
+			name: 'c',
+			method: Mt.Widget.prototype.c
 		}]
 	},
 	constructor: function(){
@@ -143,6 +221,7 @@ Mt.Class('App.Panel', {
 
 var w = new App.Window();
 w.a();
+w.c();
 
 var p = new App.Panel();
 p.a();
@@ -156,6 +235,8 @@ p.b();
 core/Mt.js
 Collection.js
 Class.js
+data/Data.js
+PluginManager.js
 Observable.js
 ```
 ##Sencha CMD

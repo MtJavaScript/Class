@@ -171,3 +171,20 @@ Mt.trait = function(proto, traits){
 		}
 	}
 };
+
+//that avoid multiple appying in deep class inheritance
+Mt.applyConfig = function(object, config){
+	var property,
+		config = config || {};
+	
+	if(object._isConfigApplied === true){
+		return object;
+	}
+	
+    for(property in config){
+		object[property] = config[property];
+    }
+	object._isConfigApplied = true;
+	
+    return object;
+};
