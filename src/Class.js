@@ -150,7 +150,7 @@ Mt.Class = function(name, config){
 	}
 	else if(config.ptype){
 		$types[config.type] = _classRef;
-		Mt.addPluginType(config.ptype, _classRef);
+		Mt.addPlugin(config.ptype, _classRef);
 	}
 };
 

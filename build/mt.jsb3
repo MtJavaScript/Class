@@ -14,6 +14,12 @@
 			"path": "../src/",
 			"name": "Class.js"
 		},{
+			"path": "../src/data/",
+			"name": "Data.js"
+		},{
+			"path": "../src/",
+			"name": "PluginManager.js"
+		},{
 			"path": "../src/",
 			"name": "Observable.js"
 		}]

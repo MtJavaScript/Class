@@ -5,6 +5,8 @@
 			pathToSrc + 'core/Mt.js',
 			pathToSrc + 'Collection.js',
 			pathToSrc + 'Class.js',
+			pathToSrc + 'data/Data.js',
+			pathToSrc + 'PluginManager.js',
 			pathToSrc + 'Observable.js'
 		],
 		i = 0,

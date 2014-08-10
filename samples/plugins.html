@@ -1,0 +1,31 @@
+<!-- Debug -->
+<script src="load-all-js-files.js"></script>
+<!-- Release -->
+<!--<script src="../build/mt.js"></script>-->
+<!-- Release min -->
+<!--<script src="../build/mt-min.js"></script>-->
+
+<script>
+Mt.Class('Mt.Panel.plugins.Scroller', {
+	ptype: 'panel.scroller',
+	constructor: function(){
+		
+	}
+});
+
+
+Mt.Class('Mt.Panel', {
+	plugins: [{
+		ptype: 'panel.scroller'
+	}],
+	constructor: function(){
+		
+	}
+});
+
+var p = new Mt.Panel({
+	title: 'Title'
+});
+
+p.scroller.scroll();
+</script>

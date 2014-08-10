@@ -1,0 +1,25 @@
+<!-- Debug -->
+<script src="load-all-js-files.js"></script>
+<!-- Release -->
+<!--<script src="../build/mt.js"></script>-->
+<!-- Release min -->
+<!--<script src="../build/mt-min.js"></script>-->
+
+<script>
+Mt.Class('Mt.App', {
+	singleton: true,
+	constructor: function(){
+		var me = this;
+		
+	},
+	a: function(){
+		console.log('a');
+	},
+	b: function(){
+		console.log('b');
+	}
+});
+
+Mt.App.a();
+Mt.App.b();
+</script>

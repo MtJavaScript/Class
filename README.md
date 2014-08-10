@@ -76,6 +76,31 @@ s.run(70);
 ```
 
 ##Sample 2
+Singleton
+```html
+<script src="../build/mt-min.js"></script>
+
+<script>
+Mt.Class('Mt.App', {
+	singleton: true,
+	constructor: function(){
+		var me = this;
+		
+	},
+	a: function(){
+		console.log('a');
+	},
+	b: function(){
+		console.log('b');
+	}
+});
+
+Mt.App.a();
+Mt.App.b();
+</script>
+```
+
+##Sample 3
 Traits are similiar to mixins or importing functions to class.  
 It addes functions to class from different classes
 ```html
