@@ -164,7 +164,7 @@ w.on('hide', function(){
 
 ##Sample 4
 Traits are similiar to mixins or importing functions to class.  
-It addes functions to class from different classes
+It addes functions to class from different classes.  
 ```html
 <script src="../build/mt-min.js"></script>
 
@@ -226,6 +226,68 @@ w.c();
 var p = new App.Panel();
 p.a();
 p.b();
+</script>
+```
+
+
+##Sample 5
+Plugins for widgets
+```html
+<script src="../build/mt-min.js"></script>
+
+<script>
+Mt.Class('Mt.Panel.plugins.Scroller', {
+	ptype: 'panel.scroller',
+	inWidgetName: 'scroller',
+	extend: Mt.Observable,
+	constructor: function(config){
+		var me = this;
+		
+		Mt.applyConfig(me, config);
+		
+		var w = me.widget;
+		
+		me.Super('const', arguments);
+		console.log(w.title);
+	},
+	scroll: function(){
+		var me = this,
+			w = me.widget;
+		
+		console.log('scroll');
+	}
+});
+
+Mt.Class('Mt.Panel', {
+	traits: {
+		classes: [
+			Mt.TraitWidget
+		]
+	},
+	plugins: [{
+		ptype: 'panel.scroller'
+	}],
+	extend: Mt.Observable,
+	constructor: function(config){
+		var me = this;
+		
+		Mt.applyConfig(me, config);
+		
+		me.Super('const', arguments);
+		me.init();
+	},
+	init: function(){
+		var me = this;
+		
+		me.initPlugins(me);
+	}
+});
+
+var p = new Mt.Panel({
+	title: 'Title'
+});
+
+p.scroller.scroll();
 </script>
 ```
 

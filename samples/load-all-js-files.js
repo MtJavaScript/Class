@@ -7,7 +7,9 @@
 			pathToSrc + 'Class.js',
 			pathToSrc + 'data/Data.js',
 			pathToSrc + 'PluginManager.js',
-			pathToSrc + 'Observable.js'
+			pathToSrc + 'WidgetManager.js',
+			pathToSrc + 'Observable.js',
+			pathToSrc + 'TraitWidget.js'
 		],
 		i = 0,
 		length = files.length,

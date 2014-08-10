@@ -118,7 +118,11 @@ Mt.Class = function(name, config){
 	}
 	
 	if(config.plugins !== undefined){
-		$classes[name].prototype._plugins = $classes[name].prototype._plugins.concat( config.plugins );
+		if( $classes[name].prototype.$plugins === undefined ){
+			$classes[name].prototype.$plugins = [];
+		}
+		
+		$classes[name].prototype.$plugins = $classes[name].prototype.$plugins.concat( config.plugins );
 		delete $classes[name].prototype.plugins;
 	}
 	
@@ -150,7 +154,7 @@ Mt.Class = function(name, config){
 	}
 	else if(config.ptype){
 		$types[config.type] = _classRef;
-		Mt.addPlugin(config.ptype, _classRef);
+		Mt.addPluginByType(config.ptype, _classRef);
 	}
 };
 

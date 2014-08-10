@@ -188,3 +188,18 @@ Mt.applyConfig = function(object, config){
 	
     return object;
 };
+
+Mt.apply(Mt, {
+	prefix: 'mt-gen',
+	idSeed: 0,
+	id: function(el, prefix){
+		if(!el){
+			return (prefix || Mt.prefix) + (++ZG.idSeed);
+		}
+		el = el.dom || {};
+		if(!el.id){
+			el.id = (prefix || Mt.prefix) + (++ZG.idSeed);
+		}
+		return el.id;
+	}
+});

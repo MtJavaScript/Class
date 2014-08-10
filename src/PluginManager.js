@@ -12,10 +12,10 @@ Mt.Class('Mt.PluginManager', {
 	}
 });
 
-Mt.addPlugin = function(ptype, plugin){
+Mt.addPluginByType = function(ptype, plugin){
 	Mt.PluginManager.addPlugin(ptype, plugin);
 };
 
-Mt.getWidget = function(ptype){
+Mt.getPluginByType = function(ptype){
 	return Mt.PluginManager.getPlugin(ptype);
 };

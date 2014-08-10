@@ -8,18 +8,48 @@
 <script>
 Mt.Class('Mt.Panel.plugins.Scroller', {
 	ptype: 'panel.scroller',
-	constructor: function(){
+	inWidgetName: 'scroller',
+	extend: Mt.Observable,
+	constructor: function(config){
+		var me = this;
 		
+		Mt.applyConfig(me, config);
+		
+		var w = me.widget;
+		
+		me.Super('const', arguments);
+		console.log(w.title);
+	},
+	scroll: function(){
+		var me = this,
+			w = me.widget;
+		
+		console.log('scroll');
 	}
 });
 
-
 Mt.Class('Mt.Panel', {
+	traits: {
+		classes: [
+			Mt.TraitWidget
+		]
+	},
 	plugins: [{
 		ptype: 'panel.scroller'
 	}],
-	constructor: function(){
+	extend: Mt.Observable,
+	constructor: function(config){
+		var me = this;
 		
+		Mt.applyConfig(me, config);
+		
+		me.Super('const', arguments);
+		me.init();
+	},
+	init: function(){
+		var me = this;
+		
+		me.initPlugins(me);
 	}
 });
 
